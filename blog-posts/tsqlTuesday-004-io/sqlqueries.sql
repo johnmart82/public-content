@@ -113,7 +113,7 @@ GO
 CREATE TABLE dbo.myDataArchive
 (
     recId INT PRIMARY KEY,
-    dataValue VARCHAR(15) DEFAULT(REPLICATE('12345',3)),
+    dataValue VARCHAR(15),
     recYear INT
 )
 ON [cloudArchive]
