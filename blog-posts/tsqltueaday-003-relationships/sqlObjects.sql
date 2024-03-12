@@ -148,5 +148,8 @@ BEGIN TRAN
 		ON p.productCategoryId = pc.categoryId
 	;
 
-ROLLBACK
+    SELECT COUNT(*) AS dataRows
+    FROM dbo.sales
+    ;
 
+ROLLBACK
