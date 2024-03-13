@@ -1,0 +1,35 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] azurerm_mssql_database.az-sqldb-01 (expand)" [label = "azurerm_mssql_database.az-sqldb-01", shape = "box"]
+		"[root] azurerm_mssql_server.az-sqlServer-01 (expand)" [label = "azurerm_mssql_server.az-sqlServer-01", shape = "box"]
+		"[root] azurerm_resource_group.rg-deployment-core (expand)" [label = "azurerm_resource_group.rg-deployment-core", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/azurerm\"]" [label = "provider[\"registry.terraform.io/hashicorp/azurerm\"]", shape = "diamond"]
+		"[root] var.ResourceGroupLocation" [label = "var.ResourceGroupLocation", shape = "note"]
+		"[root] var.ResourceGroupName" [label = "var.ResourceGroupName", shape = "note"]
+		"[root] var.azSqlDb01-Collation" [label = "var.azSqlDb01-Collation", shape = "note"]
+		"[root] var.azSqlDb01-MaxSizeGb" [label = "var.azSqlDb01-MaxSizeGb", shape = "note"]
+		"[root] var.azSqlDb01-Name" [label = "var.azSqlDb01-Name", shape = "note"]
+		"[root] var.azSqlDb01-SkuName" [label = "var.azSqlDb01-SkuName", shape = "note"]
+		"[root] var.azSqlDb01-ZoneRedundant" [label = "var.azSqlDb01-ZoneRedundant", shape = "note"]
+		"[root] var.azSqlServer01-Name" [label = "var.azSqlServer01-Name", shape = "note"]
+		"[root] var.azSqlServer01-aadAdminName" [label = "var.azSqlServer01-aadAdminName", shape = "note"]
+		"[root] var.azSqlServer01-aadObjectId" [label = "var.azSqlServer01-aadObjectId", shape = "note"]
+		"[root] azurerm_mssql_database.az-sqldb-01 (expand)" -> "[root] azurerm_mssql_server.az-sqlServer-01 (expand)"
+		"[root] azurerm_mssql_database.az-sqldb-01 (expand)" -> "[root] var.azSqlDb01-Collation"
+		"[root] azurerm_mssql_database.az-sqldb-01 (expand)" -> "[root] var.azSqlDb01-MaxSizeGb"
+		"[root] azurerm_mssql_database.az-sqldb-01 (expand)" -> "[root] var.azSqlDb01-Name"
+		"[root] azurerm_mssql_database.az-sqldb-01 (expand)" -> "[root] var.azSqlDb01-SkuName"
+		"[root] azurerm_mssql_database.az-sqldb-01 (expand)" -> "[root] var.azSqlDb01-ZoneRedundant"
+		"[root] azurerm_mssql_server.az-sqlServer-01 (expand)" -> "[root] azurerm_resource_group.rg-deployment-core (expand)"
+		"[root] azurerm_mssql_server.az-sqlServer-01 (expand)" -> "[root] var.azSqlServer01-Name"
+		"[root] azurerm_mssql_server.az-sqlServer-01 (expand)" -> "[root] var.azSqlServer01-aadAdminName"
+		"[root] azurerm_mssql_server.az-sqlServer-01 (expand)" -> "[root] var.azSqlServer01-aadObjectId"
+		"[root] azurerm_resource_group.rg-deployment-core (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/azurerm\"]"
+		"[root] azurerm_resource_group.rg-deployment-core (expand)" -> "[root] var.ResourceGroupLocation"
+		"[root] azurerm_resource_group.rg-deployment-core (expand)" -> "[root] var.ResourceGroupName"
+		"[root] provider[\"registry.terraform.io/hashicorp/azurerm\"] (close)" -> "[root] azurerm_mssql_database.az-sqldb-01 (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/azurerm\"] (close)"
+	}
+}

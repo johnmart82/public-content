@@ -1,0 +1,10 @@
+azSqlServer01-aadAdminName = "<AAD Object Name>"
+azSqlServer01-aadObjectId  = "<AAD Object ID>"
+ResourceGroupName          = "rg-azSqlDbDemo-1"
+ResourceGroupLocation      = "uksouth"
+azSqlServer01-Name         = "sql-demosql-aa54b6"
+azSqlDb01-Name             = "sqldb_demo1"
+azSqlDb01-Collation        = "Latin1_General_CI_AS"
+azSqlDb01-MaxSizeGb        = "1"
+azSqlDb01-SkuName          = "S0"
+azSqlDb01-ZoneRedundant    = false
