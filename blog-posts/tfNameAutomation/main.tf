@@ -11,6 +11,7 @@ resource "azurerm_mssql_server" "sql-paasSqlServer1" {
   azuread_administrator {
     login_username = var.sqlServerAdminEntraIdName
     object_id      = var.sqlServerAdminEntraIdObjectId
+    azuread_authentication_only = true
   }
 }
 
