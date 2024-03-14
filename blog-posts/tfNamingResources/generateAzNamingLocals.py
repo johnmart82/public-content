@@ -1,13 +1,12 @@
-#Import Pandas and give it an alias.
 import pandas as pd
 import re
 import sys
 
-#filePath = "./Naming.tf"
 filePath = f'./{sys.argv[1]}'
+cafURI = "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations"
 
 # Pull all of the tables from the Azure CAF into dataframes.
-dataFrames = pd.read_html('https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations')
+dataFrames = pd.read_html(cafURI)
 
 # Concatenate all of the dataframes into a single dataframe.
 df = pd.concat(dataFrames)
@@ -30,7 +29,7 @@ with open(filePath, 'w') as file:
     # Write out the top lines of the locals for the list of naming abbreviations.
     ## We want structure not formatting we will use the Terraform fmt statement to clean up the file once we finish writing it.
     file.write("# Contains all constants for resource naming for this Terraform solution\n")
-    file.write("# See: https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations\n")
+    file.write(f"# See: {cafURI}\n")
     file.write("locals {\n")
     file.write("azNaming = {\n")
     
@@ -40,3 +39,4 @@ with open(filePath, 'w') as file:
     
     # Close out the locals.
     file.write("}\n}\n")
+
