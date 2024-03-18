@@ -1,8 +1,6 @@
 import pandas as pd
 import re
 import argparse
-import os
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("outputFile", 
