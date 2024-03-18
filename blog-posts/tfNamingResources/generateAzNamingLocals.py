@@ -1,9 +1,22 @@
 import pandas as pd
 import re
-import sys
+import argparse
+import os
 
-filePath = f'./{sys.argv[1]}'
-cafURI = "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations"
+
+parser = argparse.ArgumentParser()
+parser.add_argument("outputFile", 
+                    help="The path and filename for the output file.",
+                    type=str)
+
+parser.add_argument("--sourceUri", "-s",
+                    help="Source URI for Microsoft CAF naming page.",
+                    default="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations")
+
+args = parser.parse_args()
+
+filePath = args.outputFile
+cafURI = args.sourceUri
 
 # Pull all of the tables from the Azure CAF into dataframes.
 dataFrames = pd.read_html(cafURI)
