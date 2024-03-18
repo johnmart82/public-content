@@ -46,8 +46,8 @@ with open(filePath, 'w') as file:
     
     # Write out the content of the name list.
     for s in nameList:
-        file.write(s+'\n')
-    
+        file.write(str.lower(s) +'\n')
+
     # Close out the locals.
     file.write("}\n}\n")
 
