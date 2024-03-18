@@ -42,7 +42,7 @@ with open(filePath, 'w') as file:
     file.write("# Contains all constants for resource naming for this Terraform solution\n")
     file.write(f"# See: {cafURI}\n")
     file.write("locals {\n")
-    file.write("azNaming = {\n")
+    file.write("azPrefix = {\n")
     
     # Write out the content of the name list.
     for s in nameList:
