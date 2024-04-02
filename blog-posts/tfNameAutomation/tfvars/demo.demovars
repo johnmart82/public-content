@@ -1,0 +1,7 @@
+applicationName               = "tfnamepost"
+environment                   = "dev"
+azureRegion                   = "uksouth"
+applicationInstance           = "1"
+sqlServerAdminEntraIdName     = "EntraID Group or User Name"
+sqlServerAdminEntraIdObjectId = "EntraID Group or User Object Id"
+azureSqlDbMaxSizeGb           = 1

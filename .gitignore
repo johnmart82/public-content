@@ -2,7 +2,7 @@
 **/.terraform/*
 
 # Local Terraform lock files
-*.terraform.locl.hcl
+*.terraform.lock.hcl
 
 # .tfstate files
 *.tfstate
