@@ -1,0 +1,14 @@
+## Naming variables
+applicationName = "blog"
+environment = "dev"
+azureRegion = "uksouth"
+applicationInstance = "1"
+
+## GitHub variables
+githubPAT = ""
+githubAdfRepoName = "tfAdfDeploymentBlogPost"
+githubAdfRepoDescription = "Repository containing files for ADF."
+
+## ADF variables
+githubAccountName = "<myAccountName>"
+adfAutoPublishingEnabled = false
