@@ -20,7 +20,7 @@ resource "github_branch" "main" {
 
 resource "github_branch_default" "ghAdfRepoBranchDefaultName" {
   repository = github_repository.ghAdfRepo.name
-  branch     = var.githubAdfRepoDefaultBranchName
+  branch     = github_branch.main.branch
 }
 
 resource "azurerm_data_factory" "adfDeployment-1" {
