@@ -24,7 +24,7 @@ resource "github_branch_default" "ghAdfRepoBranchDefaultName" {
 }
 
 resource "azurerm_data_factory" "adfDeployment-1" {
-  name                = join("-", [local.azPrefix.resource_group, local.baseName])
+  name                = join("-", [local.azPrefix.azure_data_factory, local.baseName])
   location            = azurerm_resource_group.rgDeployment-1.location
   resource_group_name = azurerm_resource_group.rgDeployment-1.name
   github_configuration {
