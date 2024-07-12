@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "d7b5a3ae-2f0e-4961-aa06-24bf80b5c5f4",
+		"name": "Rise of API - GitHub Unauthanticated",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32344205"
+	},
+	"item": [
+		{
+			"name": "Check Rate Limit Unauthenticated",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Resource</th>\r",
+							"        <th>Limit</th>\r",
+							"        <th>Used</th>\r",
+							"        <th>Remaining</th>\r",
+							"        <th>Reset</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response.resources}}\r",
+							"        <tr>\r",
+							"            <td>{{@key}}</td>\r",
+							"            <td>{{limit}}</td>\r",
+							"            <td>{{used}}</td>\r",
+							"            <td>{{remaining}}</td>\r",
+							"            <td>{{reset}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return { response: pm.response.json() }\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "{{GitHubApiVersion_Key}}",
+						"value": "{{GitHubApiVersion_Value}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "{{GitHubAcceptHeader}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{GitHubApiBasePath}}/rate_limit",
+					"host": [
+						"{{GitHubApiBasePath}}"
+					],
+					"path": [
+						"rate_limit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

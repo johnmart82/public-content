@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "dbc0e3ee-635d-4719-8b98-1c4e224443bc",
+		"name": "Rise Of API - GitHub PAT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32344205"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "{{GitHubApiVersion_Key}}",
+						"value": "{{GitHubApiVersion_Value}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "{{GitHubAcceptHeader}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{GitHubApiBasePath}}/octocat",
+					"host": [
+						"{{GitHubApiBasePath}}"
+					],
+					"path": [
+						"octocat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Rate Limit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Resource</th>\r",
+							"        <th>Limit</th>\r",
+							"        <th>Used</th>\r",
+							"        <th>Remaining</th>\r",
+							"        <th>Reset</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response.resources}}\r",
+							"        <tr>\r",
+							"            <td>{{@key}}</td>\r",
+							"            <td>{{limit}}</td>\r",
+							"            <td>{{used}}</td>\r",
+							"            <td>{{remaining}}</td>\r",
+							"            <td>{{reset}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return { response: pm.response.json() }\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "{{GitHubApiVersion_Key}}",
+						"value": "{{GitHubApiVersion_Value}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "{{GitHubAcceptHeader}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{GitHubApiBasePath}}/rate_limit",
+					"host": [
+						"{{GitHubApiBasePath}}"
+					],
+					"path": [
+						"rate_limit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Authenticated User Repo List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Name</th>\r",
+							"        <th>Private</th>\r",
+							"        <th>Owner</th>\r",
+							"        <th>URL</th>\r",
+							"        <th>Description</th>\r",
+							"        <th>Fork</th>\r",
+							"        <th>Created At</th>\r",
+							"        <th>Updated At</th>\r",
+							"        <th>Language</th>\r",
+							"        <th>Stargazers Count</th>\r",
+							"        <th>Watchers Count</th>\r",
+							"        <th>Open Issues Count</th>\r",
+							"        <th>Permissions</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response}}\r",
+							"        <tr>\r",
+							"            <td>{{name}}</td>\r",
+							"            <td>{{private}}</td>\r",
+							"            <td>{{owner.login}}</td>\r",
+							"            <td>{{html_url}}</td>\r",
+							"            <td>{{description}}</td>\r",
+							"            <td>{{fork}}</td>\r",
+							"            <td>{{created_at}}</td>\r",
+							"            <td>{{updated_at}}</td>\r",
+							"            <td>{{language}}</td>\r",
+							"            <td>{{stargazers_count}}</td>\r",
+							"            <td>{{watchers_count}}</td>\r",
+							"            <td>{{open_issues_count}}</td>\r",
+							"            <td>Admin: {{permissions.admin}}, Maintain: {{permissions.maintain}}, Push: {{permissions.push}}, Triage: {{permissions.triage}}, Pull: {{permissions.pull}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return { response: pm.response.json() }\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "{{GitHubApiVersion_Key}}",
+						"value": "{{GitHubApiVersion_Value}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "{{GitHubAcceptHeader}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{GitHubApiBasePath}}/user/repos",
+					"host": [
+						"{{GitHubApiBasePath}}"
+					],
+					"path": [
+						"user",
+						"repos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Org Public Repos (Pagination)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "{{GitHubApiVersion_Key}}",
+						"value": "{{GitHubApiVersion_Value}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "{{GitHubAcceptHeader}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{GitHubApiBasePath}}/orgs/dataplat/repos?per_page=5",
+					"host": [
+						"{{GitHubApiBasePath}}"
+					],
+					"path": [
+						"orgs",
+						"dataplat",
+						"repos"
+					],
+					"query": [
+						{
+							"key": "per_page",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{GitHub_PersonalPat}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

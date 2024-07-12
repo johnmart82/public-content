@@ -1,0 +1,33 @@
+{
+	"id": "509b0e7d-344d-46f9-85d5-aa9ad99245d2",
+	"values": [
+		{
+			"key": "GitHubApiBasePath",
+			"value": "https://api.github.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "GitHubApiVersion_Value",
+			"value": "2022-11-28",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "GitHubApiVersion_Key",
+			"value": "X-GitHub-Api-Version",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "GitHubAcceptHeader",
+			"value": "application/vnd.github+json",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2024-07-12T08:03:39.700Z",
+	"_postman_exported_using": "Postman/11.3.2-240708-2011"
+}
